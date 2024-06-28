@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { getSneakers } from './api/SneakerService'
 import './App.css'
+import Header from './components/Header'
+import SneakerList from './components/SneakerList'
 
 function App() {
   const [data, setData]= useState({})
@@ -18,14 +21,25 @@ function App() {
     }
   }
 
+  const toggleModal = (show) => { console.log("I was clicked") }
+
   useEffect(() => {
     getAllSneakers();
   }, [])
 
   return (
-    <div>
-      hello
-    </div>
+    <>
+    <Header toggleModal= {toggleModal} nbOfSneakers= {data.totalElements}/>
+    <main className='main'>
+      <div className='container'>
+        <Routes>
+          <Route path='/' element={<Navigate to={'/sneakers'}/>}/>
+          <Route path='/sneakers' element={<SneakerList data={data} currentPage={currentPage} getAllSneakers={getAllSneakers}/>}/>
+        </Routes>
+      </div>
+    </main>
+   
+    </>
   )
 }
 
