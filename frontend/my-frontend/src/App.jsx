@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { getSneakers, saveSneaker, udpatePhoto } from './api/SneakerService'
 import './App.css'
 import Header from './components/Header'
+import SneakerDetail from './components/SneakerDetail'
 import SneakerList from './components/SneakerList'
 
 function App() {
@@ -33,7 +34,6 @@ function App() {
 
   const onChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
-    console.log(values)
   }
 
   const handleNewSneaker = async (event) => {
@@ -45,7 +45,6 @@ function App() {
       formData.append('id', data.id)
       const { data: photoUrl } = await udpatePhoto(formData)
       toggleModal(false)
-      console.log(photoUrl)
       setFile(undefined)
       fileRef.current.value = null
       setValues({
@@ -58,6 +57,14 @@ function App() {
     } catch(error){
       console.log(error)
     }
+  }
+
+  const updateSneaker = async () => {
+
+  }
+
+  const updateImage = async () => {
+    
   }
 
   const toggleModal = show => show ? modalRef.current.showModal() : modalRef.current.close();
@@ -74,6 +81,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to={'/sneakers'}/>}/>
           <Route path='/sneakers' element={<SneakerList data={data} currentPage={currentPage} getAllSneakers={getAllSneakers}/>}/>
+          <Route path='/sneakers/:id' element={<SneakerDetail updateSneaker = {updateSneaker} updateImage = {updateImage} />}/>
         </Routes>
       </div>
     </main>

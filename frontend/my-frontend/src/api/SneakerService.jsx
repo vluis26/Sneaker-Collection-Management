@@ -10,8 +10,8 @@ export async function getSneakers(page = 0, size = 10){
     return await axios.get(`${API_URL}?page=${page}&size=${size}`)
 }
 
-export async function getSneaker(id){
-    return await axios.post(`${API_URL}/${id}`)
+export async function getSneaker(id) {
+    return await axios.get(`${API_URL}/${id}`);
 }
 
 export async function updateSneaker(sneaker){
