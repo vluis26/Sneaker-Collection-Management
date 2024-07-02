@@ -13,11 +13,10 @@ const Sneaker = ({ sneaker }) => {
                     <p className="contact_title">{sneaker.brand}</p>
                 </div>
             </div>
-            <div className="contact__body">
+            {/* <div className="contact__body">
                 <p> {sneaker.model}</p>
                 <p> {sneaker.colorway}</p>
-                {/* <p> {sneaker.market_value}</p> */}
-            </div>
+            </div> */}
     </Link>
   )
 }

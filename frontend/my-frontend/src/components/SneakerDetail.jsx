@@ -60,7 +60,7 @@ const SneakerDetail = ({ updateSneaker, updateImage }) => {
 
   return (
     <>
-        <Link to={'/'} className='link'> Back to list </Link>
+        <Link to={'/'} className='btn'> Back to list </Link>
         <div className='profile'>
             <div className='profile__details'>
                 <img src={sneaker.photoUrl} alt={`Profile photo of ${sneaker.name}`} />
