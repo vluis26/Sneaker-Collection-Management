@@ -63,8 +63,12 @@ function App() {
 
   }
 
-  const updateImage = async () => {
-    
+  const updateImage = async (formData) => {
+    try{
+      const { data: photoUrl } = await udpatePhoto(formData)
+    } catch(error){
+      console.log(error)
+    }
   }
 
   const toggleModal = show => show ? modalRef.current.showModal() : modalRef.current.close();
