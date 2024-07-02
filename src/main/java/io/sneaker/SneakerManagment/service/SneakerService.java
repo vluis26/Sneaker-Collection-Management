@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -50,6 +51,7 @@ public class SneakerService {
         Sneaker sneaker = getSneaker(id);
         sneakerRepo.delete(sneaker);
     }
+
 
     public String uploadPhoto(String id, MultipartFile file){
         Sneaker sneaker = getSneaker(id);

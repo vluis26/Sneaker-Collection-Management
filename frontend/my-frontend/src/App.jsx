@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { getSneakers, saveSneaker, udpatePhoto } from './api/SneakerService'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import { getSneakers, saveSneaker, udpatePhoto, deleteSneaker } from './api/SneakerService'
 import './App.css'
 import Header from './components/Header'
 import SneakerDetail from './components/SneakerDetail'
 import SneakerList from './components/SneakerList'
 
 function App() {
+  const navigate = useNavigate()
   const modalRef = useRef()
   const fileRef = useRef()
   const [data, setData]= useState({})
@@ -54,6 +55,7 @@ function App() {
         colorway: ''
       })
       getAllSneakers()
+      navigate('/')
     } catch(error){
       console.log(error)
     }
@@ -63,6 +65,7 @@ function App() {
     try{
       const { data } = await saveSneaker(sneaker)
       console.log(data)
+      getAllSneakers(currentPage)
     } catch(error){
       console.log(error)
     }
@@ -71,6 +74,16 @@ function App() {
   const updateImage = async (formData) => {
     try{
       const { data: photoUrl } = await udpatePhoto(formData)
+    } catch(error){
+      console.log(error)
+    }
+  }
+
+  const deleteSneaker1 = async (id) => {
+    try{
+      const { data } = await deleteSneaker(id)
+      getAllSneakers(currentPage)
+      console.log(data)
     } catch(error){
       console.log(error)
     }
@@ -90,7 +103,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to={'/sneakers'}/>}/>
           <Route path='/sneakers' element={<SneakerList data={data} currentPage={currentPage} getAllSneakers={getAllSneakers}/>}/>
-          <Route path='/sneakers/:id' element={<SneakerDetail updateSneaker = {updateSneaker} updateImage = {updateImage} />}/>
+          <Route path='/sneakers/:id' element={<SneakerDetail updateSneaker = {updateSneaker} updateImage = {updateImage} deleteSneaker1 = {deleteSneaker1}/>}/>
         </Routes>
       </div>
     </main>

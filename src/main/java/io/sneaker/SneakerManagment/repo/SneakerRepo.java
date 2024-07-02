@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface SneakerRepo extends JpaRepository<Sneaker, String> {
     Optional<Sneaker> findById(String id);
+
+
 }

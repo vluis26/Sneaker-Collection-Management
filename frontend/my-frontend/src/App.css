@@ -253,82 +253,66 @@ i {
 }
 
 .contact__item {
+	position: relative;
+	overflow: hidden;
+  }
+  
+  .contact__item:hover .overlay {
+	opacity: 0.7;
+  }
+  
+  .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
-	background-color: #ecf1f1;
-	padding: .88rem;
-	border-radius: var(--radius-5);
-	cursor: pointer;
-	min-height: max-content;
-	/* max-width: 280px; */
-}
-
-.contact__header {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	flex-wrap: wrap;
-	column-gap: 12px;
-}
-
-.contact__image {
-	width: 50px;
-}
-
-.contact__image img {
-	width: 100%;
-	border: 3px solid var(--selective-blue);
-	aspect-ratio: 1 / 1;
-	object-fit: cover;
-	object-position: center;
-	border-radius: var(--radius-circle);
-}
-
-.contact_name {
-	color: #3c3f3f;
-	font-size: 1.25rem;
+	height: 100%;
+	background-color: black;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+  }
+  
+  .contact__details {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 10px;
+	color: white;
 	text-align: center;
-	font-weight: 600;
-}
-
-.contact_title {
-	font-size: 11px;
-	background-color: #dfe7e8;
-	color: var(--kappel);
+	transform: translateY(100%);
+	transition: transform 0.3s ease;
+  }
+  
+  .contact__item:hover .contact__details {
+	transform: translateY(0%);
+  }
+  
+  .contact_name{
 	text-align: center;
-	border-radius: 13px;
-	font-weight: 600;
-	padding: 2px;
-}
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	padding: 80px;
+  }
 
-.contact__body {
-	margin-top: 1rem;
-}
+  .contact_title {
+	font-weight: bold;
+	color: white;
+  }
 
-/* .contact__body>p:not(:last-child) {
-	margin-bottom: .35rem;
-} */
-
-.contact__body>p {
-	font-size: 14px;
-	margin-bottom: .35rem;
-	margin-left: 8px;
-	font-weight: 500;
-}
-
-.contact__body>p i {
-	color: #75777a;
-	font-size: 20px;
-	margin-right: 8px;
-	-webkit-text-stroke: .5px;
-}
-
-.contact__body>p i::before {
-	color: var(--kappel);
-	background-color: #dfe7e8;
-	padding: 7px;
-	border-radius: var(--radius-circle);
-}
+  .contact__body {
+	text-align: center; /* Center align the text */
+  }
+  
+  .contact__body > p {
+	text-align: left; /* Ensure text within paragraphs aligns left */
+	margin-left: auto; /* Aligns text to the left */
+	margin-right: auto; /* Aligns text to the right */
+	text-overflow: ellipsis;
+	overflow: hidden;
+  }
+  
 
 .pagination {
 	margin-top: 2rem;
