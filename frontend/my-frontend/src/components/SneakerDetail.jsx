@@ -7,6 +7,7 @@ const SneakerDetail = ({ updateSneaker, updateImage }) => {
 
     const inputRef = useRef()
     const [sneaker, setSneaker] = useState({
+        id:'',
         name: '',
         brand: '',
         model: '',
@@ -47,6 +48,12 @@ const SneakerDetail = ({ updateSneaker, updateImage }) => {
         setSneaker({ ...sneaker, [event.target.name]: event.target.value })
     }
 
+    const onUpdateSneaker = async (event) => {
+        event.preventDefault()
+        await updateSneaker(sneaker)
+        fetchSneaker(id)
+    }
+
     useEffect(() => {
         fetchSneaker(id);
     }, [])
@@ -65,7 +72,7 @@ const SneakerDetail = ({ updateSneaker, updateImage }) => {
             </div>
             <div className='profile__settings'>
                 <div>
-                <form  className="form">
+                <form onSubmit={onUpdateSneaker} className="form">
                             <div className="user-details">
                                 <input type="hidden" defaultValue={sneaker.id} name="id" required />
                                 <div className="input-box">

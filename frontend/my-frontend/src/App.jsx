@@ -59,8 +59,13 @@ function App() {
     }
   }
 
-  const updateSneaker = async () => {
-
+  const updateSneaker = async (sneaker) => {
+    try{
+      const { data } = await saveSneaker(sneaker)
+      console.log(data)
+    } catch(error){
+      console.log(error)
+    }
   }
 
   const updateImage = async (formData) => {
