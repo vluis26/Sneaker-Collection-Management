@@ -7,7 +7,7 @@ const Sneaker = ({ sneaker }) => {
       <div className="contact__header">
         <div className="contact__image">
           <img src={sneaker.photoUrl} alt={sneaker.name} />
-          <div className="overlay"></div> {/* Overlay for hover effect */}
+          <div className="overlay"></div>
         </div>
         <div className="contact__details">
           <p className="contact_name">{sneaker.name} </p>

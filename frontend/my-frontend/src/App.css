@@ -311,7 +311,14 @@ i {
 	margin-right: auto; /* Aligns text to the right */
 	text-overflow: ellipsis;
 	overflow: hidden;
-  }
+}
+
+.contact__image {
+	width: 290px;
+	height: 210px;
+	object-fit: cover;
+	border-radius: var(--radius-5);
+}
   
 
 .pagination {

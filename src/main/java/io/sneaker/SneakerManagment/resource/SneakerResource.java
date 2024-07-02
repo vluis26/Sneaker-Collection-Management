@@ -32,7 +32,7 @@ public class SneakerResource {
 
     @GetMapping
     public ResponseEntity<Page<Sneaker>> getSneakers(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                     @RequestParam(value = "size", defaultValue = "10") int size) {
+                                                     @RequestParam(value = "size", defaultValue = "8") int size) {
         return ResponseEntity.ok().body(sneakerService.getAllSneakers(page, size));
     }
 

@@ -22,7 +22,7 @@ function App() {
     colorway: ''
   })
 
-  const getAllSneakers = async (page = 0, size = 10) => {
+  const getAllSneakers = async (page = 0, size = 8) => {
     try{
       setCurrentPage(page)
       const { data } = await getSneakers(page, size)
@@ -74,6 +74,7 @@ function App() {
   const updateImage = async (formData) => {
     try{
       const { data: photoUrl } = await udpatePhoto(formData)
+      getAllSneakers(currentPage)
     } catch(error){
       console.log(error)
     }
