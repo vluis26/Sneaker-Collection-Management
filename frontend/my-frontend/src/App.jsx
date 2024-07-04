@@ -19,7 +19,9 @@ function App() {
     name: '',
     brand: '',
     model: '',
-    colorway: ''
+    colorway: '',
+    styleId: '',
+    stockxprice: ''
   })
 
   const getAllSneakers = async (page = 0, size = 8) => {
@@ -52,7 +54,9 @@ function App() {
         name: '',
         brand: '',
         model: '',
-        colorway: ''
+        colorway: '',
+        styleId: '',
+        stockxprice: ''
       })
       getAllSneakers()
       navigate('/')
@@ -135,6 +139,10 @@ function App() {
               <div className="input-box">
                 <span className="details">Colorway</span>
                 <input type="text" value={values.colorway} onChange={onChange} name='colorway' required />
+              </div>
+              <div className="input-box">
+                <span className="details">Style ID</span>
+                <input type="text" value={values.styleId} onChange={onChange} name='styleId' required />
               </div>
               <div className="file-input">
                 <span className="details">Profile Photo</span>

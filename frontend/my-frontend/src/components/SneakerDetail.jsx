@@ -10,7 +10,9 @@ const SneakerDetail = ({ updateSneaker, updateImage, deleteSneaker1 }) => {
         brand: '',
         model: '',
         colorway: '',
-        photoUrl: ''
+        styleId: '',
+        photoUrl: '',
+        stockxprice: ''
     });
     const { id } = useParams();
     const navigate = useNavigate();
@@ -101,6 +103,14 @@ const SneakerDetail = ({ updateSneaker, updateImage, deleteSneaker1 }) => {
                                 <div className="input-box">
                                     <span className="details">Colorway</span>
                                     <input type="text" value={sneaker.colorway} onChange={onChange} name="colorway" required />
+                                </div>
+                                <div className="input-box">
+                                    <span className="details">StyleId</span>
+                                    <input type="text" value={sneaker.styleId} onChange={onChange} name="styleId" required />
+                                </div>
+                                <div className="input-box">
+                                    <span className="details">StockX Price</span>
+                                    <input type="text" value={sneaker.stockxprice} name="stockxprice" readOnly />
                                 </div>
                             </div>
                             <div className="form_footer">

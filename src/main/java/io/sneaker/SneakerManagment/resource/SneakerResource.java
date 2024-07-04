@@ -1,6 +1,5 @@
 package io.sneaker.SneakerManagment.resource;
 
-
 import io.sneaker.SneakerManagment.domain.Sneaker;
 import io.sneaker.SneakerManagment.service.SneakerService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static io.sneaker.SneakerManagment.constant.Constant.PHOTO_DIRECTORY;
 import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
@@ -26,8 +24,8 @@ public class SneakerResource {
     private final SneakerService sneakerService;
 
     @PostMapping
-    public ResponseEntity<Sneaker> createSneaker(@RequestBody Sneaker sneaker){
-        return ResponseEntity.created(URI.create("/sneakers/userID")).body(sneakerService.createSneaker(sneaker));
+    public ResponseEntity<Sneaker> createSneaker(@RequestBody Sneaker sneaker) {
+        return ResponseEntity.created(URI.create("/sneakers/" + sneaker.getId())).body(sneakerService.createSneaker(sneaker));
     }
 
     @GetMapping
@@ -37,12 +35,12 @@ public class SneakerResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Sneaker> getSneaker(@PathVariable(value = "id") String id){
+    public ResponseEntity<Sneaker> getSneaker(@PathVariable(value = "id") String id) {
         return ResponseEntity.ok().body(sneakerService.getSneaker(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSneaker(@PathVariable(value = "id") String id){
+    public ResponseEntity<Void> deleteSneaker(@PathVariable(value = "id") String id) {
         sneakerService.deleteSneaker(id);
         return ResponseEntity.noContent().build();
     }
@@ -51,7 +49,6 @@ public class SneakerResource {
     public ResponseEntity<String> uploadPhoto(@RequestParam("id") String id, @RequestParam("file") MultipartFile file) {
         return ResponseEntity.ok().body(sneakerService.uploadPhoto(id, file));
     }
-
 
     @GetMapping(path = "/image/{filename}", produces = { IMAGE_PNG_VALUE, IMAGE_JPEG_VALUE })
     public byte[] getPhoto(@PathVariable("filename") String filename) throws IOException {

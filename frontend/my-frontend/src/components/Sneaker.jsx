@@ -17,6 +17,8 @@ const Sneaker = ({ sneaker }) => {
       <div className="contact__body">
         <p>{sneaker.model}</p>
         <p>{sneaker.colorway}</p>
+        <p>{sneaker.styleId}</p>
+        <p>${sneaker.stockxprice}</p>
       </div>
     </Link>
   );

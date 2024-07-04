@@ -28,9 +28,16 @@ public class Sneaker {
     private String brand;
     private String model;
     private String colorway;
+    private String styleId;
     private String photoUrl;
+    private Double stockxprice;
+
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public void setStockxPrice(double stockxPrice) {
+        this.stockxprice=stockxPrice;
     }
 }

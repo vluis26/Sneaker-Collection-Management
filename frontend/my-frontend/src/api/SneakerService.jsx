@@ -6,7 +6,7 @@ export async function saveSneaker(sneaker){
     return await axios.post(API_URL, sneaker)
 }
 
-export async function getSneakers(page = 0, size = 10){
+export async function getSneakers(page = 0, size = 8){
     return await axios.get(`${API_URL}?page=${page}&size=${size}`)
 }
 
